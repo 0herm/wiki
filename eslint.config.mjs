@@ -1,18 +1,46 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import eslint from '@eslint/js'
+import tseslint from 'typescript-eslint'
+import typescriptParser from '@typescript-eslint/parser'
+import stylistic from '@stylistic/eslint-plugin'
+import pluginNext from '@next/eslint-plugin-next'
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
-]);
-
-export default eslintConfig;
+export default [
+    eslint.configs.recommended,
+    ...tseslint.configs.recommended,
+    {
+        plugins: {
+            '@stylistic': stylistic,
+            '@next/next': pluginNext,
+        },
+        languageOptions: {
+            sourceType: 'module',
+            ecmaVersion: 2024,
+            parser: typescriptParser,
+        },
+        rules: {
+            ...pluginNext.configs.recommended.rules,
+            strict: 'error',
+            'no-var': 'error',
+            'array-callback-return': 'error',
+            yoda: 'error',
+            '@stylistic/indent': ['error', 4],
+            '@stylistic/quotes': ['error', 'single'],
+            '@stylistic/semi': ['error', 'never'],
+            '@stylistic/jsx-quotes': ['error', 'prefer-single'],
+            '@stylistic/type-generic-spacing': ['error'],
+            '@stylistic/type-annotation-spacing': 'error',
+            '@stylistic/no-trailing-spaces': 'error',
+            '@typescript-eslint/no-unused-vars': 'error',
+            '@typescript-eslint/ban-ts-comment': 'off',
+            '@typescript-eslint/no-non-null-assertion': 'off',
+            '@stylistic/max-len': [
+                'error',
+                {
+                    code: 140,
+                    ignoreComments: true,
+                    ignoreUrls: true,
+                },
+            ],
+        },
+    },
+]
