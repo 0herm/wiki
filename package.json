@@ -13,7 +13,8 @@
     "@typescript-eslint/parser": "^8.46.2",
     "next": "16.0.0",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "uibee": "^2.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",

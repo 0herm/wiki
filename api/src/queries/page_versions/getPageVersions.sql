@@ -1,0 +1,1 @@
+SELECT * FROM page_versions WHERE page_id = $1 ORDER BY version_number DESC

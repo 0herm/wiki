@@ -1,0 +1,1 @@
+SELECT * FROM comments WHERE page_id = $1 ORDER BY created_at DESC
