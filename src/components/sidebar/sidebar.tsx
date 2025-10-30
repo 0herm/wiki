@@ -56,7 +56,7 @@ export default function SideBar() {
     }, [currentParentId])
 
     return (
-        <div className='w-2xs p-2'>
+        <div className='w-2xs p-2 h-fit sticky top-20'>
             <button className='flex flex-row gap-1 cursor-pointer bg-login-500 rounded-sm px-3.5 py-1.5'>
                 <FilePlus2 className='p-1' />
                 New Page
