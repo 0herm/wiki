@@ -1,6 +1,6 @@
 'use server'
 
-import { getWrapper } from "./apiWrapper"
+import { getWrapper } from './apiWrapper'
 
 export async function getPage(id: number): Promise<GetPageProps> {
     const path = `/pages/${id}`

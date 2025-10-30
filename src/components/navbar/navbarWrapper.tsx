@@ -31,7 +31,7 @@ export default function Navbar({
 
     return (
         <div className={`${isMobileMenuOpen ? 'bg-[#181818f0]' : 'bg-[#18181899]'} backdrop-blur-xl fixed top-0 z-900 w-full`}>
-            <div className={`flex w-full max-w-6xl m-auto p-2 transition duration-500 800px:justify-between 800px:p-4 ${
+            <div className={`flex w-full p-2 transition duration-500 800px:justify-between 800px:p-4 ${
                 isMobileMenuOpen ? 'h-screen bg-login-900/20 800px:h-20' : ''
             }`}>
                 {/* Logo */}

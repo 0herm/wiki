@@ -2,7 +2,8 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Highlight, themes } from 'prism-react-renderer'
 
-const Code = ({ node, inline, className, children, ...props }: any) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Code = ({ inline, className, children, ...props }: any) => {
     const match = /language-(\w+)/.exec(className || '')
     const language = match ? match[1] : ''
     const code = String(children).replace(/\n$/, '')

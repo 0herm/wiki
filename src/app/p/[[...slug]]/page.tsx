@@ -1,5 +1,5 @@
-import MarkdownRender from "@components/markdown/markdown"
-import { getPageBySlug } from "@utils/api"
+import MarkdownRender from '@components/markdown/markdown'
+import { getPageBySlug } from '@utils/api'
 
 export default async function Page({ params }: { params: { slug?: string[] } }) {
     const slugParams = await params
@@ -7,20 +7,26 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
     const page = await getPageBySlug(slugParams.slug?.join('/') || 'root')
 
     return (
-        <div className="min-h-screen bg-background">
-            <div className="px-4 py-8">
-                <article className="prose prose-login max-w-none">
-                    <header className="mb-8">
-                        <h1 className="text-4xl font-bold text-foreground mb-2">
+        <div className='min-h-screen bg-background'>
+            <div className='px-4 pt-8'>
+                <article className='w-full'>
+                    <header>
+                        <h1 className='text-4xl font-bold pb-1'>
                             {page.title}
                         </h1>
                         {page.description && (
-                            <p className="text-lg text-muted-foreground">
+                            <p className='text-lg text-login-75'>
                                 {page.description}
                             </p>
                         )}
+                        <p className='text-sm text-login-100 py-1'>
+                            Last edited by <span className='font-semibold'>{page.edited_by}</span> on  {
+                                new Date(page.updated_at).toLocaleString('en-GB', { dateStyle: 'long', timeStyle: 'short' })
+                            }
+                        </p>
                     </header>
-                    <div className="prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-code:text-foreground prose-pre:bg-muted prose-pre:border">
+                    <hr className='mt-4 mb-8' />
+                    <div className='max-w-none prose prose-login'>
                         <MarkdownRender content={page.content} />
                     </div>
                 </article>

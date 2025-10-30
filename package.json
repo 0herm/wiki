@@ -2,11 +2,12 @@
   "name": "wiki",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint --fix ./src"
   },
   "dependencies": {
     "@next/eslint-plugin-next": "^16.0.0",

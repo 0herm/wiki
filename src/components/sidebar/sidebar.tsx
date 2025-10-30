@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { File, FilePlus2, Folder, ArrowLeft } from 'lucide-react'
+import { File, FilePlus2, Folder, Upload } from 'lucide-react'
 import { getCookie } from 'uibee/utils'
 import config from '@config'
 import { useRouter } from 'next/navigation'
@@ -57,10 +57,16 @@ export default function SideBar() {
 
     return (
         <div className='w-2xs p-2 h-fit sticky top-20'>
-            <button className='flex flex-row gap-1 cursor-pointer bg-login-500 rounded-sm px-3.5 py-1.5'>
-                <FilePlus2 className='p-1' />
-                New Page
-            </button>
+            <div className='flex flex-row gap-2 justify-between'>
+                <button className='flex flex-row gap-1 cursor-pointer bg-login-500 rounded-sm px-2 py-1.5 w-full'>
+                    <FilePlus2 className='p-1' />
+                    Page
+                </button>
+                <button className='flex flex-row gap-1 cursor-pointer bg-login-500 rounded-sm px-2 py-1.5 w-full'>
+                    <Upload className='p-1' />
+                    Image
+                </button>
+            </div>
             <div className='mt-4 flex flex-wrap gap-1 text-sm'>
                 {parentStack.map((item, index) => (
                     <span key={index} className='flex items-center cursor-default'>
@@ -78,8 +84,9 @@ export default function SideBar() {
                 ))}
             </div>
             <div className='mt-4'>
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                 {pages.map((page: any) => (
-                    <button 
+                    <button
                         key={page.id}
                         className='flex gap-2 py-2 cursor-pointer w-full'
                         onClick={
@@ -93,11 +100,7 @@ export default function SideBar() {
                             }
                         }
                     >
-                        {page.has_children ? 
-                                <Folder />
-                            :
-                                <File />
-                        }
+                        {page.has_children ? <Folder /> : <File />}
                         {page.title}
                     </button>
                 ))}
