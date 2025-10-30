@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { File, FilePlus2, Folder } from 'lucide-react'
+import { File, FilePlus2, Folder, ArrowLeft } from 'lucide-react'
 import { getCookie } from 'uibee/utils'
 import config from '@config'
 import { useRouter } from 'next/navigation'
@@ -42,6 +42,7 @@ async function getPages(parentId: string | null) {
 export default function SideBar() {
     const [pages, setPages] = useState([])
     const [currentParentId, setCurrentParentId] = useState<string | null>(null)
+    const [parentStack, setParentStack] = useState<Array<{id: string | null, title: string}>>([{id: null, title: 'Home'}])
     const router = useRouter()
 
     useEffect(() => {
@@ -60,6 +61,22 @@ export default function SideBar() {
                 <FilePlus2 className='p-1' />
                 New Page
             </button>
+            <div className='mt-4 flex flex-wrap gap-1 text-sm'>
+                {parentStack.map((item, index) => (
+                    <span key={index} className='flex items-center'>
+                        <button
+                            className='cursor-pointer hover:underline'
+                            onClick={() => {
+                                setParentStack(parentStack.slice(0, index + 1))
+                                setCurrentParentId(item.id)
+                            }}
+                        >
+                            {item.title}
+                        </button>
+                        {index < parentStack.length - 1 && <span className='mx-1'>›</span>}
+                    </span>
+                ))}
+            </div>
             <div className='mt-4'>
                 {pages.map((page: any) => (
                     <button 
@@ -68,6 +85,7 @@ export default function SideBar() {
                         onClick={
                             () => {
                                 if (page.has_children) {
+                                    setParentStack([...parentStack, {id: page.id, title: page.title}])
                                     setCurrentParentId(page.id)
                                 } else {
                                     router.push(`/p/${page.slug}`)
