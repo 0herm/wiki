@@ -13,9 +13,6 @@ import getComments from './handlers/comments/getComments.ts'
 import createComment from './handlers/comments/createComment.ts'
 import updateComment from './handlers/comments/updateComment.ts'
 import deleteComment from './handlers/comments/deleteComment.ts'
-import getPageTags from './handlers/page_tags/getPageTags.ts'
-import addTagToPage from './handlers/page_tags/addTagToPage.ts'
-import removeTagFromPage from './handlers/page_tags/removeTagFromPage.ts'
 import getPageVersions from './handlers/page_versions/getPageVersions.ts'
 import createPageVersion from './handlers/page_versions/createPageVersion.ts'
 import type { FastifyInstance } from 'fastify'
@@ -44,11 +41,6 @@ export default async function apiRoutes(fastify: FastifyInstance) {
     fastify.post('/comments', createComment)
     fastify.put('/comments/:id', updateComment)
     fastify.delete('/comments/:id', deleteComment)
-
-    // page tags
-    fastify.get('/pages/:pageId/tags', getPageTags)
-    fastify.post('/page-tags', addTagToPage)
-    fastify.delete('/page-tags/:pageId/:tagId', removeTagFromPage)
 
     // page versions
     fastify.get('/pages/:pageId/versions', getPageVersions)

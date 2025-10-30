@@ -19,8 +19,14 @@
       }
     ],
     "paths": {
+      "@config": ["./constants.ts"],
+      "@text/*": ["./public/text/*"],
+      "@public/*": ["./public/*"],
+      "@app/*": ["./src/app/*"],
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
       "@/*": ["./src/*"],
-      "@config": ["./constants.ts"]
+      "@parent/*": ["./*"]
     }
   },
   "include": [

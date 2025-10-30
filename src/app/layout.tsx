@@ -4,6 +4,7 @@ import './globals.css'
 // @ts-ignore
 import 'uibee/styles'
 import NavBar from '@/components/navbar/navbar'
+import SideBar from '@/components/sidebar/sidebar'
 
 export const metadata: Metadata = {
     title: 'Wiki',
@@ -12,12 +13,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang='en' className='dark'>
-            <body
-                className='antialiased'
-            >
+        <html lang='en' className='dark min-h-screen'>
+            <body className='flex flex-col bg-login-700 min-h-screen w-full'>
                 <NavBar />
-                {children}
+                <main className='flex w-full grow pt-20'>
+                    <SideBar />
+                    <div className='grow bg-login-800'>{children}</div>
+                </main>
             </body>
         </html>
     )

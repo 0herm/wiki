@@ -1,7 +1,5 @@
-SELECT p.*,
-       COALESCE(json_agg(t.*) FILTER (WHERE t.id IS NOT NULL), '[]'::json) as tags
+SELECT p.id, p.title, p.parent_id, p.slug,
+       EXISTS (SELECT 1 FROM pages WHERE parent_id = p.id) as has_children
 FROM pages p
-LEFT JOIN page_tags pt ON p.id = pt.page_id
-LEFT JOIN tags t ON pt.tag_id = t.id
-GROUP BY p.id
-ORDER BY p.created_at DESC
+WHERE ($1::integer IS NULL OR p.parent_id = $1)
+ORDER BY has_children DESC

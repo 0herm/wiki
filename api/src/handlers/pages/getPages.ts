@@ -2,10 +2,16 @@ import type { FastifyReply, FastifyRequest } from 'fastify'
 import run from '#db'
 import { loadSQL } from '#utils/sql.ts'
 
-export default async function getPagesHandler(req: FastifyRequest, res: FastifyReply) {
+interface GetPagesQuery {
+    parent_id?: string
+}
+
+export default async function getPagesHandler(req: FastifyRequest<{ Querystring: GetPagesQuery }>, res: FastifyReply) {
     try {
+        const { parent_id } = req.query
         const query = await loadSQL('pages/getPages.sql')
-        const result = await run(query)
+        const params: SQLParamType[] = parent_id ? [parseInt(parent_id)] : [null]
+        const result = await run(query, params)
         res.send(result.rows)
     } catch (error) {
         console.error(error)

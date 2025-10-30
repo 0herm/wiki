@@ -1,4 +1,5 @@
-import { Navbar, NavItem } from 'uibee/components'
+import Navbar from '@components/navbar/navbarWrapper'
+import NavItem from '@components/navbar/navbarItem'
 import { cookies } from 'next/headers'
 
 export default async function NavBar() {
@@ -8,10 +9,6 @@ export default async function NavBar() {
     return (
         <Navbar
             token={token}
-            theme='dark'
-            disableThemeToggle
-            lang='en'
-            disableLanguageToggle
         >
             <NavItem href='/'>Home</NavItem>
         </Navbar>

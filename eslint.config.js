@@ -17,6 +17,7 @@ export default [
             ecmaVersion: 2024,
             parser: typescriptParser,
         },
+        includes: ['src/**/*',],
         rules: {
             ...pluginNext.configs.recommended.rules,
             strict: 'error',

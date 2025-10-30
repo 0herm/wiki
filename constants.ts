@@ -4,14 +4,14 @@ const { env } = process
 
 const config = {
     url: {
-        API_URL: env.API_URL || 'http://localhost:8080/api/',
+        API_URL: env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/',
     },
     authInternal: {
-        BASE_URL: env.BASE_URL,
-        LOGIN_URL: `${env.BASE_URL}/api/login`,
-        REDIRECT_URL: `${env.BASE_URL}/api/callback`,
-        TOKEN_URL: `${env.BASE_URL}/api/token`,
-        LOGOUT_URL: `${env.BASE_URL}/api/logout`,
+        BASE_URL: env.NEXT_PUBLIC_BASE_URL,
+        LOGIN_URL: `${env.NEXT_PUBLIC_BASE_URL}/api/login`,
+        REDIRECT_URL: `${env.NEXT_PUBLIC_BASE_URL}/api/callback`,
+        TOKEN_URL: `${env.NEXT_PUBLIC_BASE_URL}/api/token`,
+        LOGOUT_URL: `${env.NEXT_PUBLIC_BASE_URL}/api/logout`,
     },
     authService: {
         CLIENT_ID: env.AUTH_CLIENT_ID,
