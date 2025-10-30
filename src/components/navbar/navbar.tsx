@@ -1,8 +1,9 @@
 import { Navbar, NavItem } from 'uibee/components'
-import { getCookie } from 'uibee/utils'
+import { cookies } from 'next/headers'
 
-export default function NavBar() {
-    const token = getCookie('access_token')
+export default async function NavBar() {
+    const getCookies = await cookies()
+    const token = getCookies.get('access_token')?.value || null
 
     return (
         <Navbar
@@ -13,7 +14,6 @@ export default function NavBar() {
             disableLanguageToggle
         >
             <NavItem href='/'>Home</NavItem>
-            <NavItem href='https://login.no' external>Login</NavItem>
         </Navbar>
     )
 }

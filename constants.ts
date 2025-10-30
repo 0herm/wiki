@@ -16,9 +16,9 @@ const config = {
     authService: {
         CLIENT_ID: env.AUTH_CLIENT_ID,
         CLIENT_SECRET: env.AUTH_CLIENT_SECRET,
-        AUTH_URL: `${env.AUTH_URL}/api/oauth2/authorize/`,
-        TOKEN_URL: `${env.AUTH_URL}/api/oauth2/token/`,
-        USERINFO_URL: `${env.AUTH_URL}/api/oauth2/userinfo/`,
+        AUTH_URL: `${env.AUTH_URL}/application/o/authorize/`,
+        TOKEN_URL: `${env.AUTH_URL}/application/o/token/`,
+        USERINFO_URL: `${env.AUTH_URL}/application/o/userinfo/`,
     },
     version: packageInfo.version,
 }
