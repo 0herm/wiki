@@ -63,9 +63,9 @@ export default function SideBar() {
             </button>
             <div className='mt-4 flex flex-wrap gap-1 text-sm'>
                 {parentStack.map((item, index) => (
-                    <span key={index} className='flex items-center'>
+                    <span key={index} className='flex items-center cursor-default'>
                         <button
-                            className='cursor-pointer hover:underline'
+                            className='cursor-pointer'
                             onClick={() => {
                                 setParentStack(parentStack.slice(0, index + 1))
                                 setCurrentParentId(item.id)
@@ -81,7 +81,7 @@ export default function SideBar() {
                 {pages.map((page: any) => (
                     <button 
                         key={page.id}
-                        className='flex gap-2 py-2 cursor-pointer'
+                        className='flex gap-2 py-2 cursor-pointer w-full'
                         onClick={
                             () => {
                                 if (page.has_children) {
