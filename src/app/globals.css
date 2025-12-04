@@ -41,6 +41,7 @@
   --tw-prose-th-borders: var(--color-login-50);
   --tw-prose-td-borders: var(--color-login-100);
 }
+
 @utility noscroll {
     -ms-overflow-style: none;
     scrollbar-width: none;
